@@ -10,33 +10,193 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnomaliesRouteImport } from './routes/anomalies'
+import { Route as CasesRouteImport } from './routes/cases'
+import { Route as ClustersRouteImport } from './routes/clusters'
+import { Route as CommunicationsRouteImport } from './routes/communications'
+import { Route as CrossDomainRouteImport } from './routes/cross-domain'
+import { Route as DataSourcesRouteImport } from './routes/data-sources'
+import { Route as GraphRouteImport } from './routes/graph'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as TransactionsRouteImport } from './routes/transactions'
+import { Route as EntitiesIndexRouteImport } from './routes/entities.index'
+import { Route as EntitiesEntityIdRouteImport } from './routes/entities.$entityId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnomaliesRoute = AnomaliesRouteImport.update({
+  id: '/anomalies',
+  path: '/anomalies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClustersRoute = ClustersRouteImport.update({
+  id: '/clusters',
+  path: '/clusters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunicationsRoute = CommunicationsRouteImport.update({
+  id: '/communications',
+  path: '/communications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrossDomainRoute = CrossDomainRouteImport.update({
+  id: '/cross-domain',
+  path: '/cross-domain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataSourcesRoute = DataSourcesRouteImport.update({
+  id: '/data-sources',
+  path: '/data-sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraphRoute = GraphRouteImport.update({
+  id: '/graph',
+  path: '/graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransactionsRoute = TransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntitiesIndexRoute = EntitiesIndexRouteImport.update({
+  id: '/entities/',
+  path: '/entities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntitiesEntityIdRoute = EntitiesEntityIdRouteImport.update({
+  id: '/entities/$entityId',
+  path: '/entities/$entityId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/anomalies': typeof AnomaliesRoute
+  '/cases': typeof CasesRoute
+  '/clusters': typeof ClustersRoute
+  '/communications': typeof CommunicationsRoute
+  '/cross-domain': typeof CrossDomainRoute
+  '/data-sources': typeof DataSourcesRoute
+  '/graph': typeof GraphRoute
+  '/reports': typeof ReportsRoute
+  '/timeline': typeof TimelineRoute
+  '/transactions': typeof TransactionsRoute
+  '/entities/$entityId': typeof EntitiesEntityIdRoute
+  '/entities/': typeof EntitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/anomalies': typeof AnomaliesRoute
+  '/cases': typeof CasesRoute
+  '/clusters': typeof ClustersRoute
+  '/communications': typeof CommunicationsRoute
+  '/cross-domain': typeof CrossDomainRoute
+  '/data-sources': typeof DataSourcesRoute
+  '/graph': typeof GraphRoute
+  '/reports': typeof ReportsRoute
+  '/timeline': typeof TimelineRoute
+  '/transactions': typeof TransactionsRoute
+  '/entities/$entityId': typeof EntitiesEntityIdRoute
+  '/entities': typeof EntitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/anomalies': typeof AnomaliesRoute
+  '/cases': typeof CasesRoute
+  '/clusters': typeof ClustersRoute
+  '/communications': typeof CommunicationsRoute
+  '/cross-domain': typeof CrossDomainRoute
+  '/data-sources': typeof DataSourcesRoute
+  '/graph': typeof GraphRoute
+  '/reports': typeof ReportsRoute
+  '/timeline': typeof TimelineRoute
+  '/transactions': typeof TransactionsRoute
+  '/entities/$entityId': typeof EntitiesEntityIdRoute
+  '/entities/': typeof EntitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/anomalies'
+    | '/cases'
+    | '/clusters'
+    | '/communications'
+    | '/cross-domain'
+    | '/data-sources'
+    | '/graph'
+    | '/reports'
+    | '/timeline'
+    | '/transactions'
+    | '/entities/$entityId'
+    | '/entities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/anomalies'
+    | '/cases'
+    | '/clusters'
+    | '/communications'
+    | '/cross-domain'
+    | '/data-sources'
+    | '/graph'
+    | '/reports'
+    | '/timeline'
+    | '/transactions'
+    | '/entities/$entityId'
+    | '/entities'
+  id:
+    | '__root__'
+    | '/'
+    | '/anomalies'
+    | '/cases'
+    | '/clusters'
+    | '/communications'
+    | '/cross-domain'
+    | '/data-sources'
+    | '/graph'
+    | '/reports'
+    | '/timeline'
+    | '/transactions'
+    | '/entities/$entityId'
+    | '/entities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnomaliesRoute: typeof AnomaliesRoute
+  CasesRoute: typeof CasesRoute
+  ClustersRoute: typeof ClustersRoute
+  CommunicationsRoute: typeof CommunicationsRoute
+  CrossDomainRoute: typeof CrossDomainRoute
+  DataSourcesRoute: typeof DataSourcesRoute
+  GraphRoute: typeof GraphRoute
+  ReportsRoute: typeof ReportsRoute
+  TimelineRoute: typeof TimelineRoute
+  TransactionsRoute: typeof TransactionsRoute
+  EntitiesEntityIdRoute: typeof EntitiesEntityIdRoute
+  EntitiesIndexRoute: typeof EntitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +208,107 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/anomalies': {
+      id: '/anomalies'
+      path: '/anomalies'
+      fullPath: '/anomalies'
+      preLoaderRoute: typeof AnomaliesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clusters': {
+      id: '/clusters'
+      path: '/clusters'
+      fullPath: '/clusters'
+      preLoaderRoute: typeof ClustersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communications': {
+      id: '/communications'
+      path: '/communications'
+      fullPath: '/communications'
+      preLoaderRoute: typeof CommunicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cross-domain': {
+      id: '/cross-domain'
+      path: '/cross-domain'
+      fullPath: '/cross-domain'
+      preLoaderRoute: typeof CrossDomainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-sources': {
+      id: '/data-sources'
+      path: '/data-sources'
+      fullPath: '/data-sources'
+      preLoaderRoute: typeof DataSourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/graph': {
+      id: '/graph'
+      path: '/graph'
+      fullPath: '/graph'
+      preLoaderRoute: typeof GraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transactions': {
+      id: '/transactions'
+      path: '/transactions'
+      fullPath: '/transactions'
+      preLoaderRoute: typeof TransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entities/': {
+      id: '/entities/'
+      path: '/entities'
+      fullPath: '/entities/'
+      preLoaderRoute: typeof EntitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entities/$entityId': {
+      id: '/entities/$entityId'
+      path: '/entities/$entityId'
+      fullPath: '/entities/$entityId'
+      preLoaderRoute: typeof EntitiesEntityIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnomaliesRoute: AnomaliesRoute,
+  CasesRoute: CasesRoute,
+  ClustersRoute: ClustersRoute,
+  CommunicationsRoute: CommunicationsRoute,
+  CrossDomainRoute: CrossDomainRoute,
+  DataSourcesRoute: DataSourcesRoute,
+  GraphRoute: GraphRoute,
+  ReportsRoute: ReportsRoute,
+  TimelineRoute: TimelineRoute,
+  TransactionsRoute: TransactionsRoute,
+  EntitiesEntityIdRoute: EntitiesEntityIdRoute,
+  EntitiesIndexRoute: EntitiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
