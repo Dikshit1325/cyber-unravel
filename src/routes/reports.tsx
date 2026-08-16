@@ -26,7 +26,7 @@ function ReportsPage() {
     <div className="space-y-5">
       <PageHeader
         title="Investigation Report"
-        subtitle={`${primaryCase.id} · ${primaryCase.title}`}
+        subtitle={`${primaryCase.id} · ${primaryCase.name}`}
         action={
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => toast.success("Report exported as PDF (simulated)")}>
@@ -48,7 +48,7 @@ function ReportsPage() {
             Digital Footprint Analysis Report
           </h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Case {primaryCase.id} · Officer {primaryCase.officer} · Generated for internal investigative use
+            Case {primaryCase.id} · Officer {primaryCase.investigator} · Generated for internal investigative use
           </p>
         </header>
 
@@ -69,7 +69,7 @@ function ReportsPage() {
               <li key={a.id} className="flex items-start gap-2 text-sm">
                 <SeverityBadge severity={a.severity} />
                 <span className="text-muted-foreground">
-                  <span className="text-foreground">{a.title}</span> — {a.description}
+                  <span className="text-foreground">{a.title}</span> — {a.explanation}
                 </span>
               </li>
             ))}
@@ -92,14 +92,14 @@ function ReportsPage() {
               <tbody className="divide-y divide-border">
                 {entities
                   .slice()
-                  .sort((a, b) => b.priority - a.priority)
+                  .sort((a, b) => b.score - a.score)
                   .slice(0, 6)
                   .map((e) => (
                     <tr key={e.id}>
                       <td className="py-2 font-mono text-primary">{e.id}</td>
                       <td className="py-2 text-muted-foreground">{e.type}</td>
-                      <td className="py-2 font-mono text-foreground">{e.priority}</td>
-                      <td className="py-2 text-muted-foreground">{e.domains.join(", ")}</td>
+                      <td className="py-2 font-mono text-foreground">{e.score}</td>
+                      <td className="py-2 text-muted-foreground">{e.domain}</td>
                     </tr>
                   ))}
               </tbody>
@@ -112,7 +112,7 @@ function ReportsPage() {
           <ol className="mt-2 space-y-1.5">
             {timelineEvents.slice(0, 6).map((t) => (
               <li key={t.id} className="flex gap-3 text-xs">
-                <span className="w-36 shrink-0 font-mono text-muted-foreground">{t.timestamp}</span>
+                <span className="w-36 shrink-0 font-mono text-muted-foreground">{t.date} {t.time}</span>
                 <span className="text-foreground">{t.title}</span>
               </li>
             ))}
