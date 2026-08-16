@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as GraphRouteImport } from './routes/graph'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as EntitiesIndexRouteImport } from './routes/entities.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const TimelineRoute = TimelineRouteImport.update({
   path: '/timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EntitiesIndexRoute = EntitiesIndexRouteImport.update({
+  id: '/entities/',
+  path: '/entities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cases': typeof CasesRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
+  '/entities/': typeof EntitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cases': typeof CasesRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
+  '/entities': typeof EntitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/cases': typeof CasesRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
+  '/entities/': typeof EntitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cases' | '/graph' | '/timeline'
+  fullPaths: '/' | '/cases' | '/graph' | '/timeline' | '/entities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cases' | '/graph' | '/timeline'
-  id: '__root__' | '/' | '/cases' | '/graph' | '/timeline'
+  to: '/' | '/cases' | '/graph' | '/timeline' | '/entities'
+  id: '__root__' | '/' | '/cases' | '/graph' | '/timeline' | '/entities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   CasesRoute: typeof CasesRoute
   GraphRoute: typeof GraphRoute
   TimelineRoute: typeof TimelineRoute
+  EntitiesIndexRoute: typeof EntitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entities/': {
+      id: '/entities/'
+      path: '/entities'
+      fullPath: '/entities/'
+      preLoaderRoute: typeof EntitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   CasesRoute: CasesRoute,
   GraphRoute: GraphRoute,
   TimelineRoute: TimelineRoute,
+  EntitiesIndexRoute: EntitiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
