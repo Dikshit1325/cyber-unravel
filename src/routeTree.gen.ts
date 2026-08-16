@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnomaliesRouteImport } from './routes/anomalies'
 import { Route as CasesRouteImport } from './routes/cases'
+import { Route as CommunicationsRouteImport } from './routes/communications'
 import { Route as GraphRouteImport } from './routes/graph'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as TransactionsRouteImport } from './routes/transactions'
@@ -31,6 +32,11 @@ const AnomaliesRoute = AnomaliesRouteImport.update({
 const CasesRoute = CasesRouteImport.update({
   id: '/cases',
   path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunicationsRoute = CommunicationsRouteImport.update({
+  id: '/communications',
+  path: '/communications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GraphRoute = GraphRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
   '/cases': typeof CasesRoute
+  '/communications': typeof CommunicationsRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
   '/transactions': typeof TransactionsRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
   '/cases': typeof CasesRoute
+  '/communications': typeof CommunicationsRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
   '/transactions': typeof TransactionsRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
   '/cases': typeof CasesRoute
+  '/communications': typeof CommunicationsRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
   '/transactions': typeof TransactionsRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/anomalies'
     | '/cases'
+    | '/communications'
     | '/graph'
     | '/timeline'
     | '/transactions'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/anomalies'
     | '/cases'
+    | '/communications'
     | '/graph'
     | '/timeline'
     | '/transactions'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/anomalies'
     | '/cases'
+    | '/communications'
     | '/graph'
     | '/timeline'
     | '/transactions'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnomaliesRoute: typeof AnomaliesRoute
   CasesRoute: typeof CasesRoute
+  CommunicationsRoute: typeof CommunicationsRoute
   GraphRoute: typeof GraphRoute
   TimelineRoute: typeof TimelineRoute
   TransactionsRoute: typeof TransactionsRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/cases'
       fullPath: '/cases'
       preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communications': {
+      id: '/communications'
+      path: '/communications'
+      fullPath: '/communications'
+      preLoaderRoute: typeof CommunicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/graph': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnomaliesRoute: AnomaliesRoute,
   CasesRoute: CasesRoute,
+  CommunicationsRoute: CommunicationsRoute,
   GraphRoute: GraphRoute,
   TimelineRoute: TimelineRoute,
   TransactionsRoute: TransactionsRoute,
