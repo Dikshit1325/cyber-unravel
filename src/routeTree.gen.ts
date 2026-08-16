@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as GraphRouteImport } from './routes/graph'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as TransactionsRouteImport } from './routes/transactions'
 import { Route as EntitiesIndexRouteImport } from './routes/entities.index'
 import { Route as EntitiesEntityIdRouteImport } from './routes/entities.$entityId'
 
@@ -36,6 +37,11 @@ const TimelineRoute = TimelineRouteImport.update({
   path: '/timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TransactionsRoute = TransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EntitiesIndexRoute = EntitiesIndexRouteImport.update({
   id: '/entities/',
   path: '/entities/',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/cases': typeof CasesRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
+  '/transactions': typeof TransactionsRoute
   '/entities/$entityId': typeof EntitiesEntityIdRoute
   '/entities/': typeof EntitiesIndexRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/cases': typeof CasesRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
+  '/transactions': typeof TransactionsRoute
   '/entities/$entityId': typeof EntitiesEntityIdRoute
   '/entities': typeof EntitiesIndexRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/cases': typeof CasesRoute
   '/graph': typeof GraphRoute
   '/timeline': typeof TimelineRoute
+  '/transactions': typeof TransactionsRoute
   '/entities/$entityId': typeof EntitiesEntityIdRoute
   '/entities/': typeof EntitiesIndexRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/cases'
     | '/graph'
     | '/timeline'
+    | '/transactions'
     | '/entities/$entityId'
     | '/entities/'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/cases'
     | '/graph'
     | '/timeline'
+    | '/transactions'
     | '/entities/$entityId'
     | '/entities'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/cases'
     | '/graph'
     | '/timeline'
+    | '/transactions'
     | '/entities/$entityId'
     | '/entities/'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   CasesRoute: typeof CasesRoute
   GraphRoute: typeof GraphRoute
   TimelineRoute: typeof TimelineRoute
+  TransactionsRoute: typeof TransactionsRoute
   EntitiesEntityIdRoute: typeof EntitiesEntityIdRoute
   EntitiesIndexRoute: typeof EntitiesIndexRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/transactions': {
+      id: '/transactions'
+      path: '/transactions'
+      fullPath: '/transactions'
+      preLoaderRoute: typeof TransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entities/': {
       id: '/entities/'
       path: '/entities'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   CasesRoute: CasesRoute,
   GraphRoute: GraphRoute,
   TimelineRoute: TimelineRoute,
+  TransactionsRoute: TransactionsRoute,
   EntitiesEntityIdRoute: EntitiesEntityIdRoute,
   EntitiesIndexRoute: EntitiesIndexRoute,
 }
