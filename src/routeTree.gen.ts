@@ -17,6 +17,7 @@ import { Route as CommunicationsRouteImport } from './routes/communications'
 import { Route as CrossDomainRouteImport } from './routes/cross-domain'
 import { Route as DataSourcesRouteImport } from './routes/data-sources'
 import { Route as GraphRouteImport } from './routes/graph'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as TransactionsRouteImport } from './routes/transactions'
 import { Route as EntitiesIndexRouteImport } from './routes/entities.index'
@@ -62,6 +63,11 @@ const GraphRoute = GraphRouteImport.update({
   path: '/graph',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/cross-domain': typeof CrossDomainRoute
   '/data-sources': typeof DataSourcesRoute
   '/graph': typeof GraphRoute
+  '/reports': typeof ReportsRoute
   '/timeline': typeof TimelineRoute
   '/transactions': typeof TransactionsRoute
   '/entities/$entityId': typeof EntitiesEntityIdRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/cross-domain': typeof CrossDomainRoute
   '/data-sources': typeof DataSourcesRoute
   '/graph': typeof GraphRoute
+  '/reports': typeof ReportsRoute
   '/timeline': typeof TimelineRoute
   '/transactions': typeof TransactionsRoute
   '/entities/$entityId': typeof EntitiesEntityIdRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/cross-domain': typeof CrossDomainRoute
   '/data-sources': typeof DataSourcesRoute
   '/graph': typeof GraphRoute
+  '/reports': typeof ReportsRoute
   '/timeline': typeof TimelineRoute
   '/transactions': typeof TransactionsRoute
   '/entities/$entityId': typeof EntitiesEntityIdRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/cross-domain'
     | '/data-sources'
     | '/graph'
+    | '/reports'
     | '/timeline'
     | '/transactions'
     | '/entities/$entityId'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/cross-domain'
     | '/data-sources'
     | '/graph'
+    | '/reports'
     | '/timeline'
     | '/transactions'
     | '/entities/$entityId'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/cross-domain'
     | '/data-sources'
     | '/graph'
+    | '/reports'
     | '/timeline'
     | '/transactions'
     | '/entities/$entityId'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   CrossDomainRoute: typeof CrossDomainRoute
   DataSourcesRoute: typeof DataSourcesRoute
   GraphRoute: typeof GraphRoute
+  ReportsRoute: typeof ReportsRoute
   TimelineRoute: typeof TimelineRoute
   TransactionsRoute: typeof TransactionsRoute
   EntitiesEntityIdRoute: typeof EntitiesEntityIdRoute
@@ -244,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GraphRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/timeline': {
       id: '/timeline'
       path: '/timeline'
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   CrossDomainRoute: CrossDomainRoute,
   DataSourcesRoute: DataSourcesRoute,
   GraphRoute: GraphRoute,
+  ReportsRoute: ReportsRoute,
   TimelineRoute: TimelineRoute,
   TransactionsRoute: TransactionsRoute,
   EntitiesEntityIdRoute: EntitiesEntityIdRoute,
