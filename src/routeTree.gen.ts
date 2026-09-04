@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnomaliesRouteImport } from './routes/anomalies'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ClustersRouteImport } from './routes/clusters'
 import { Route as CommunicationsRouteImport } from './routes/communications'
@@ -31,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const AnomaliesRoute = AnomaliesRouteImport.update({
   id: '/anomalies',
   path: '/anomalies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CasesRoute = CasesRouteImport.update({
@@ -92,6 +98,7 @@ const EntitiesEntityIdRoute = EntitiesEntityIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
+  '/auth': typeof AuthRoute
   '/cases': typeof CasesRoute
   '/clusters': typeof ClustersRoute
   '/communications': typeof CommunicationsRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
+  '/auth': typeof AuthRoute
   '/cases': typeof CasesRoute
   '/clusters': typeof ClustersRoute
   '/communications': typeof CommunicationsRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
+  '/auth': typeof AuthRoute
   '/cases': typeof CasesRoute
   '/clusters': typeof ClustersRoute
   '/communications': typeof CommunicationsRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/anomalies'
+    | '/auth'
     | '/cases'
     | '/clusters'
     | '/communications'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/anomalies'
+    | '/auth'
     | '/cases'
     | '/clusters'
     | '/communications'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/anomalies'
+    | '/auth'
     | '/cases'
     | '/clusters'
     | '/communications'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnomaliesRoute: typeof AnomaliesRoute
+  AuthRoute: typeof AuthRoute
   CasesRoute: typeof CasesRoute
   ClustersRoute: typeof ClustersRoute
   CommunicationsRoute: typeof CommunicationsRoute
@@ -213,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/anomalies'
       fullPath: '/anomalies'
       preLoaderRoute: typeof AnomaliesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases': {
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnomaliesRoute: AnomaliesRoute,
+  AuthRoute: AuthRoute,
   CasesRoute: CasesRoute,
   ClustersRoute: ClustersRoute,
   CommunicationsRoute: CommunicationsRoute,
