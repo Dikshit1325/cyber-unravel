@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnomaliesRouteImport } from './routes/anomalies'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ClustersRouteImport } from './routes/clusters'
 import { Route as CommunicationsRouteImport } from './routes/communications'
 import { Route as CrossDomainRouteImport } from './routes/cross-domain'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DataSourcesRouteImport } from './routes/data-sources'
 import { Route as GraphRouteImport } from './routes/graph'
 import { Route as ReportsRouteImport } from './routes/reports'
@@ -31,6 +33,11 @@ const IndexRoute = IndexRouteImport.update({
 const AnomaliesRoute = AnomaliesRouteImport.update({
   id: '/anomalies',
   path: '/anomalies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CasesRoute = CasesRouteImport.update({
@@ -51,6 +58,11 @@ const CommunicationsRoute = CommunicationsRouteImport.update({
 const CrossDomainRoute = CrossDomainRouteImport.update({
   id: '/cross-domain',
   path: '/cross-domain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DataSourcesRoute = DataSourcesRouteImport.update({
@@ -92,10 +104,12 @@ const EntitiesEntityIdRoute = EntitiesEntityIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
+  '/auth': typeof AuthRoute
   '/cases': typeof CasesRoute
   '/clusters': typeof ClustersRoute
   '/communications': typeof CommunicationsRoute
   '/cross-domain': typeof CrossDomainRoute
+  '/dashboard': typeof DashboardRoute
   '/data-sources': typeof DataSourcesRoute
   '/graph': typeof GraphRoute
   '/reports': typeof ReportsRoute
@@ -107,10 +121,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
+  '/auth': typeof AuthRoute
   '/cases': typeof CasesRoute
   '/clusters': typeof ClustersRoute
   '/communications': typeof CommunicationsRoute
   '/cross-domain': typeof CrossDomainRoute
+  '/dashboard': typeof DashboardRoute
   '/data-sources': typeof DataSourcesRoute
   '/graph': typeof GraphRoute
   '/reports': typeof ReportsRoute
@@ -123,10 +139,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/anomalies': typeof AnomaliesRoute
+  '/auth': typeof AuthRoute
   '/cases': typeof CasesRoute
   '/clusters': typeof ClustersRoute
   '/communications': typeof CommunicationsRoute
   '/cross-domain': typeof CrossDomainRoute
+  '/dashboard': typeof DashboardRoute
   '/data-sources': typeof DataSourcesRoute
   '/graph': typeof GraphRoute
   '/reports': typeof ReportsRoute
@@ -140,10 +158,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/anomalies'
+    | '/auth'
     | '/cases'
     | '/clusters'
     | '/communications'
     | '/cross-domain'
+    | '/dashboard'
     | '/data-sources'
     | '/graph'
     | '/reports'
@@ -155,10 +175,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/anomalies'
+    | '/auth'
     | '/cases'
     | '/clusters'
     | '/communications'
     | '/cross-domain'
+    | '/dashboard'
     | '/data-sources'
     | '/graph'
     | '/reports'
@@ -170,10 +192,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/anomalies'
+    | '/auth'
     | '/cases'
     | '/clusters'
     | '/communications'
     | '/cross-domain'
+    | '/dashboard'
     | '/data-sources'
     | '/graph'
     | '/reports'
@@ -186,10 +210,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnomaliesRoute: typeof AnomaliesRoute
+  AuthRoute: typeof AuthRoute
   CasesRoute: typeof CasesRoute
   ClustersRoute: typeof ClustersRoute
   CommunicationsRoute: typeof CommunicationsRoute
   CrossDomainRoute: typeof CrossDomainRoute
+  DashboardRoute: typeof DashboardRoute
   DataSourcesRoute: typeof DataSourcesRoute
   GraphRoute: typeof GraphRoute
   ReportsRoute: typeof ReportsRoute
@@ -213,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/anomalies'
       fullPath: '/anomalies'
       preLoaderRoute: typeof AnomaliesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases': {
@@ -241,6 +274,13 @@ declare module '@tanstack/react-router' {
       path: '/cross-domain'
       fullPath: '/cross-domain'
       preLoaderRoute: typeof CrossDomainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/data-sources': {
@@ -298,10 +338,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnomaliesRoute: AnomaliesRoute,
+  AuthRoute: AuthRoute,
   CasesRoute: CasesRoute,
   ClustersRoute: ClustersRoute,
   CommunicationsRoute: CommunicationsRoute,
   CrossDomainRoute: CrossDomainRoute,
+  DashboardRoute: DashboardRoute,
   DataSourcesRoute: DataSourcesRoute,
   GraphRoute: GraphRoute,
   ReportsRoute: ReportsRoute,
