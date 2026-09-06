@@ -17,7 +17,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { cases, entities, timelineEvents } from "@/lib/mock-data";
+const cases = [{ id: "CASE-2026-1024" }];
+import { entities, timelineEvents } from "@/lib/mock-data";
 import type { TimelineEvent } from "@/lib/types";
 
 export const Route = createFileRoute("/timeline")({

@@ -3,8 +3,6 @@ import { useState } from "react";
 import { PageHeader, Panel, SeverityBadge, DomainTag } from "@/components/investigation/primitives";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { anomalies } from "@/lib/mock-data";
-import type { Anomaly } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/anomalies")({
@@ -27,8 +25,8 @@ const tabs = ["All", "Telecom", "Financial", "Social", "Network", "Cross-Domain"
 
 function AnomaliesPage() {
   const [tab, setTab] = useState<(typeof tabs)[number]>("All");
-  const [explain, setExplain] = useState<Anomaly | null>(null);
-  const rows = anomalies.filter((a) => (tab === "All" ? true : a.domain === tab));
+  const [explain, setExplain] = useState<any | null>(null);
+  const rows = [].filter((a: any) => (tab === "All" ? true : a.domain === tab));
 
   return (
     <div className="space-y-5">

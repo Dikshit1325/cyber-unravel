@@ -15,7 +15,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { cases as seedCases, investigator } from "@/lib/mock-data";
+const seedCases: any[] = [];
+const investigator = { name: "Investigator" };
 import type { Case } from "@/lib/types";
 import { toast } from "sonner";
 

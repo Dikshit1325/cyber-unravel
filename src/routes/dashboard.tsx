@@ -14,7 +14,6 @@ import {
   cases,
   hiddenRelationships,
   kpis,
-  platform,
   timelineEvents,
 } from "@/lib/mock-data";
 
@@ -48,7 +47,7 @@ function CommandCenter() {
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
             Cross-domain intelligence across telecom, financial and digital footprints.{" "}
-            <span className="text-primary">{platform.motto}</span>
+            <span className="text-primary">Uncovering the truth hidden in the data.</span>
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <Button asChild>
